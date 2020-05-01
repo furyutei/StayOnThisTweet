@@ -3,7 +3,7 @@
 // @name:ja         このツイートに留まって！
 // @namespace       https://furyutei.work
 // @license         MIT
-// @version         0.0.1
+// @version         0.0.2
 // @description     Suppress clicking on the body of a reply tweet to go back to the source of the mention.
 // @description:ja  返信ツイートを表示したとき、本文をクリックすると言及元に戻ってしまうのを抑制
 // @author          furyu
@@ -52,6 +52,10 @@ document.body.addEventListener( 'click', ( event ) => {
             break;
         default :
             return;
+    }
+    
+    if ( target_element.closest( 'a, div[role="blockquote"]' ) ) {
+        return;
     }
     
     const
